@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>T10 MEHEDI SPAM</title>
+  <title>ASTRO SPAM</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
 
@@ -182,6 +182,23 @@
       transform: none;
     }
 
+    .btn-auto-all {
+      background: linear-gradient(135deg, #0099ff, #00ccff);
+      border: none;
+      border-radius: 8px;
+      color: #050510;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 12px 20px;
+      text-transform: uppercase;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-auto-all:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(0,204,255,.35); }
+    .btn-auto-all:disabled { background: #1a1a2e; color: #333355; cursor: not-allowed; box-shadow: none; }
+
     .btn-clear {
       background: transparent;
       border: 1px solid #1a1a3a;
@@ -220,6 +237,37 @@
       margin-top: 6px;
       text-align: right;
     }
+
+    /* ── AUTO SPAM LIST UI ── */
+    .creator-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+    .creator-panel::-webkit-scrollbar { width: 4px; }
+    .creator-panel::-webkit-scrollbar-thumb { background: #1a1a3a; border-radius: 4px; }
+    
+    .creator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+    }
+    .creator-item {
+      background: #060610;
+      border: 1px solid #1a1a3a;
+      border-radius: 6px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .creator-name { color: #ffffff; font-weight: bold; }
+    .creator-uid { color: #555577; font-size: 11px; margin-top: 2px;}
+    .creator-count { color: var(--green); font-family: 'Orbitron', sans-serif; font-size: 12px; border: 1px solid #1a1a3a; padding: 2px 6px; border-radius: 4px; background: #0c0c1f;}
 
     /* ── STATUS BADGE ── */
     .status-badge {
@@ -315,7 +363,7 @@
 <body>
 
 <header>
-  <div class="logo">T10 MEHEDI SPAM</div>
+  <div class="logo">ASTRO SPAM</div>
   <div class="subtitle">Friend Request Spammer &bull; Async Engine</div>
 </header>
 
@@ -343,10 +391,11 @@
 
   <!-- FORM -->
   <div class="form-panel">
-    <label>Target Friend UID</label>
+    <label>Target Friend UID / Multi Spam Mode</label>
     <div class="input-row">
       <input id="uid-input" type="text" placeholder="Enter Target UID..."/>
       <button class="btn-spam" id="btn-start" onclick="startSpam()">SPAM</button>
+      <button class="btn-auto-all" id="btn-auto-all" onclick="startAutoAllSpam()">AUTO ALL UID</button>
       <button class="btn-clear" onclick="clearConsole()">CLEAR</button>
     </div>
     <div class="progress-wrap">
@@ -355,6 +404,14 @@
     <div class="progress-label" id="prog-label">0 / {{ total }}</div>
     <div>
       <span class="status-badge" id="status-badge">IDLE</span>
+    </div>
+  </div>
+
+  <!-- CREATOR DATABANK UI -->
+  <div class="creator-panel">
+    <label style="display:block; font-size:11px; letter-spacing:3px; color:#555577; text-transform:uppercase; margin-bottom:8px;">Database Auto Targets List & Live Count</label>
+    <div class="creator-grid" id="creator-list-ui">
+      <!-- Dynamic list from JS -->
     </div>
   </div>
 
@@ -373,12 +430,66 @@
 
 </main>
 
-<footer>T10 MEHEDI SPAM &bull; Powered by Python + Flask &bull; Async aiohttp Engine</footer>
+<footer>ASTRO SPAM &bull; Powered by Python + Flask &bull; Async aiohttp Engine</footer>
 
 <script>
   const totalAccs = {{ total }};
   let es = null;
   let running = false;
+
+  // আপনার দেওয়া সম্পূর্ণ JSON ডেটাবেজ যা UI তে লোড হবে
+  const uidDatabase = {
+    "creators": [
+      { "name": "MR TRIPLE R", "uid": "728027523" },
+      { "name": "ITZ KABBO", "uid": "738975228" },
+      { "name": "GAMING WITH TALHA", "uid": "249224826" },
+      { "name": "GAMING WITH TALHA (ALT)", "uid": "363841804" },
+      { "name": "PRANTO DADA", "uid": "8552169493" },
+      { "name": "UFB SHAKIB", "uid": "1426013845" },
+      { "name": "GWD NABIL", "uid": "1982662219" },
+      { "name": "ZARA GAMING", "uid": "2162605039" },
+      { "name": "JANNAT GAMING", "uid": "125594231" },
+      { "name": "ROASTED GAMING", "uid": "238870422" },
+      { "name": "SOONEETA", "uid": "131311296" },
+      { "name": "TONDE GAMING", "uid": "4324510642" },
+      { "name": "TGR NRZ", "uid": "1594870955" },
+      { "name": "GAMING WITH BHABIJI", "uid": "306106538" },
+      { "name": "ITS KAVYA", "uid": "448777176" },
+      { "name": "ILLUSIONIST YT", "uid": "162483594" },
+      { "name": "GAMING WITH NAYEEM", "uid": "302308734" },
+      { "name": "GAMER AZRIN", "uid": "1846467381" },
+      { "name": "DON VAI", "uid": "110599577" },
+      { "name": "RAHAT FF 71", "uid": "551381665" },
+      { "name": "RAADVAI YT (MAIN)", "uid": "483570659" },
+      { "name": "TOXIC JAHID", "uid": "1253018251" },
+      { "name": "LMC GAMING", "uid": "354146050" },
+      { "name": "JIHAD FF", "uid": "2065842817" },
+      { "name": "ASTATINE FF", "uid": "1488106192" },
+      { "name": "ZISAN VAI (MAIN)", "uid": "1066840428" }
+    ]
+  };
+
+  // UI তে লোড করার ফাংশন
+  function loadUIDDatabaseUI() {
+    const container = document.getElementById('creator-list-ui');
+    container.innerHTML = '';
+    uidDatabase.creators.forEach(c => {
+      const item = document.createElement('div');
+      item.className = 'creator-item';
+      item.id = `creator-${c.uid}`;
+      item.innerHTML = `
+        <div>
+          <div class="creator-name">${c.name}</div>
+          <div class="creator-uid">UID: ${c.uid}</div>
+        </div>
+        <div class="creator-count" id="count-${c.uid}">0</div>
+      `;
+      container.appendChild(item);
+    });
+  }
+
+  // পেজ লোড হলেই লিস্ট দেখাবে
+  window.onload = loadUIDDatabaseUI;
 
   function ts() {
     const d = new Date();
@@ -426,8 +537,10 @@
     setStatus('idle');
     document.getElementById('prog-bar').style.width = '0%';
     document.getElementById('prog-label').textContent = `0 / ${totalAccs}`;
+    loadUIDDatabaseUI();
   }
 
+  // মেইন সিঙ্গেল স্প্যাম ফাংশন (যা অলরেডি ছিল)
   function startSpam() {
     if (running) return;
     const uid = document.getElementById('uid-input').value.trim();
@@ -435,6 +548,7 @@
 
     running = true;
     document.getElementById('btn-start').disabled = true;
+    document.getElementById('btn-auto-all').disabled = true;
     setStatus('running');
     updateStats(0, 0, 0);
 
@@ -442,9 +556,82 @@
     if (empty) empty.remove();
 
     appendLog('log-sys', '', '', `▶ Starting spam → Target UID: ${uid} | Accounts: ${totalAccs}`);
+    executeSpamStream(uid);
+  }
 
+  // লুপ চালিয়ে একটার পর একটা অটো রিকোয়েস্ট মারার অ্যালগরিদম
+  async function startAutoAllSpam() {
+    if (running) return;
+    running = true;
+    document.getElementById('btn-start').disabled = true;
+    document.getElementById('btn-auto-all').disabled = true;
+    
+    appendLog('log-sys', '', 'SYSTEM', `🚀 STARTING AUTO ALL UID MULTI-SPAM MODE...`);
+
+    for (let i = 0; i < uidDatabase.creators.length; i++) {
+      const creator = uidDatabase.creators[i];
+      // হাইলাইট করার জন্য আইটেম বর্ডার চেঞ্জ
+      const el = document.getElementById(`creator-${creator.uid}`);
+      if(el) el.style.borderColor = "var(--green)";
+
+      appendLog('log-info', '', 'LOOP', `Processing [${i+1}/${uidDatabase.creators.length}] : ${creator.name}`);
+      
+      // কারেন্ট রানিং UID প্রসেস শেষ হওয়া পর্যন্ত ওয়েট করবে (Promise Based Sync)
+      await new Promise((resolve) => {
+        setStatus('running');
+        updateStats(0, 0, 0);
+        
+        if (es) { es.close(); es = null; }
+        es = new EventSource(`/stream?uid=${encodeURIComponent(creator.uid)}`);
+
+        es.onmessage = (e) => {
+          const d = JSON.parse(e.data);
+
+          if (d.type === 'start') return;
+
+          if (d.type === 'done') {
+            appendLog('log-sys', '', '◆', `FINISHED ${creator.name} -> Success: ${d.success}`);
+            updateStats(d.success, d.fail, d.total);
+            if(el) el.style.borderColor = "var(--border)";
+            es.close();
+            resolve(); // লুপের পরবর্তী টার্গেটে যাওয়ার সিগন্যাল
+            return;
+          }
+
+          // লাইভ কাউন্টার আপডেট
+          if (d.type === 'success') {
+            const countEl = document.getElementById(`count-${creator.uid}`);
+            if (countEl) {
+              let currentCount = parseInt(countEl.textContent);
+              countEl.textContent = currentCount + 1;
+            }
+          }
+
+          const isOk = d.type === 'success';
+          appendLog(isOk ? 'log-ok' : 'log-err', d.uid, d.status, `${creator.name} | ${d.msg.substring(0, 60)}`);
+          updateStats(d.success, d.fail, d.done);
+        };
+
+        es.onerror = () => {
+          appendLog('log-err', '', 'ERR', `Connection dropped for ${creator.name}. Moving to next.`);
+          if(el) el.style.borderColor = "var(--red)";
+          es.close();
+          resolve(); 
+        };
+      });
+    }
+
+    // অল প্রসেস ডান
+    setStatus('done');
+    running = false;
+    document.getElementById('btn-start').disabled = false;
+    document.getElementById('btn-auto-all').disabled = false;
+    appendLog('log-sys', '', 'SYSTEM', `🎉 ALL UID SPAM COMPLETED SUCCESSFULLY!`);
+  }
+
+  // ওল্ড সিঙ্গেল ইউজার স্ট্রিম এক্সিকিউশন
+  function executeSpamStream(uid) {
     if (es) { es.close(); es = null; }
-
     es = new EventSource(`/stream?uid=${encodeURIComponent(uid)}`);
 
     es.onmessage = (e) => {
@@ -461,17 +648,22 @@
         setStatus('done');
         running = false;
         document.getElementById('btn-start').disabled = false;
+        document.getElementById('btn-auto-all').disabled = false;
         es.close();
         return;
       }
 
+      // লাইভ কাউন্ট আপডেট যদি ডাটাবেজের কারো সাথে মিলে
+      if (d.type === 'success') {
+        const countEl = document.getElementById(`count-${uid}`);
+        if (countEl) {
+          let currentCount = parseInt(countEl.textContent);
+          countEl.textContent = currentCount + 1;
+        }
+      }
+
       const isOk = d.type === 'success';
-      appendLog(
-        isOk ? 'log-ok' : 'log-err',
-        d.uid,
-        d.status,
-        d.msg.substring(0, 120)
-      );
+      appendLog(isOk ? 'log-ok' : 'log-err', d.uid, d.status, d.msg.substring(0, 120));
       updateStats(d.success, d.fail, d.done);
     };
 
@@ -480,6 +672,7 @@
       setStatus('error');
       running = false;
       document.getElementById('btn-start').disabled = false;
+      document.getElementById('btn-auto-all').disabled = false;
       if (es) { es.close(); es = null; }
     };
   }
