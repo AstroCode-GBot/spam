@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ASTRO SPAM</title>
+  <title>T10 MEHEDI SPAM</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
 
@@ -173,14 +173,7 @@
     }
 
     .btn-spam:hover  { transform: translateY(-1px); box-shadow: 0 0 20px rgba(0,255,136,.35); }
-    .btn-spam:active { transform: translateY(0); }
-    .btn-spam:disabled {
-      background: #1a1a2e;
-      color: #333355;
-      cursor: not-allowed;
-      box-shadow: none;
-      transform: none;
-    }
+    .btn-spam:disabled { background: #1a1a2e; color: #333355; cursor: not-allowed; box-shadow: none; transform: none; }
 
     .btn-auto-all {
       background: linear-gradient(135deg, #0099ff, #00ccff);
@@ -210,7 +203,6 @@
       padding: 12px 18px;
       transition: border-color .2s, color .2s;
     }
-
     .btn-clear:hover { border-color: var(--red); color: var(--red); }
 
     /* ── PROGRESS ── */
@@ -244,7 +236,7 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 16px;
-      max-height: 250px;
+      max-height: 280px;
       overflow-y: auto;
     }
     .creator-panel::-webkit-scrollbar { width: 4px; }
@@ -252,22 +244,95 @@
     
     .creator-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 10px;
     }
     .creator-item {
       background: #060610;
       border: 1px solid #1a1a3a;
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 8px 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 13px;
+      transition: border-color 0.2s;
     }
-    .creator-name { color: #ffffff; font-weight: bold; }
+    .creator-name { color: #ffffff; font-weight: bold; text-transform: uppercase; }
     .creator-uid { color: #555577; font-size: 11px; margin-top: 2px;}
-    .creator-count { color: var(--green); font-family: 'Orbitron', sans-serif; font-size: 12px; border: 1px solid #1a1a3a; padding: 2px 6px; border-radius: 4px; background: #0c0c1f;}
+    
+    .creator-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .creator-count { 
+      color: var(--green); 
+      font-family: 'Orbitron', sans-serif; 
+      font-size: 11px; 
+      border: 1px solid #1a1a3a; 
+      padding: 3px 6px; 
+      border-radius: 4px; 
+      background: #0c0c1f;
+      min-width: 24px;
+      text-align: center;
+    }
+    .btn-manual-req {
+      background: #121225;
+      border: 1px solid #2a2a4a;
+      color: var(--green);
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-manual-req:hover {
+      background: var(--green);
+      border-color: var(--green);
+      color: #000;
+    }
+    .btn-manual-req:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      background: #121225;
+      color: #444;
+    }
+
+    /* ── ADD CUSTOM UID PANEL ── */
+    .add-uid-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .add-uid-panel input {
+      background: #060610;
+      border: 1px solid #1a1a3a;
+      border-radius: 6px;
+      color: #fff;
+      font-family: 'Share Tech Mono', monospace;
+      padding: 8px 12px;
+      outline: none;
+      font-size: 14px;
+    }
+    .add-uid-panel input:focus { border-color: #0099ff; }
+    .btn-add-custom {
+      background: #0099ff;
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 16px;
+      cursor: pointer;
+    }
+    .btn-add-custom:hover { background: #00ccff; box-shadow: 0 0 10px rgba(0,204,255,0.2); }
 
     /* ── STATUS BADGE ── */
     .status-badge {
@@ -282,7 +347,6 @@
       color: #444466;
       margin-top: 10px;
     }
-
     .status-badge.running  { border-color: var(--green); color: var(--green); animation: pulse 1.2s ease-in-out infinite; }
     .status-badge.done     { border-color: var(--yellow); color: var(--yellow); }
     .status-badge.error    { border-color: var(--red); color: var(--red); }
@@ -299,7 +363,6 @@
       border-radius: 12px;
       overflow: hidden;
     }
-
     .console-header {
       background: #0a0a18;
       border-bottom: 1px solid var(--border);
@@ -308,12 +371,10 @@
       align-items: center;
       gap: 10px;
     }
-
     .dot { width: 10px; height: 10px; border-radius: 50%; }
     .dot-r { background: var(--red); }
     .dot-y { background: var(--yellow); }
     .dot-g { background: var(--green); }
-
     .console-title {
       font-size: 11px;
       letter-spacing: 3px;
@@ -321,18 +382,15 @@
       text-transform: uppercase;
       margin-left: auto;
     }
-
     .console-body {
-      height: 340px;
+      height: 300px;
       overflow-y: auto;
       padding: 14px 16px;
       font-size: 13px;
       line-height: 1.65;
       scroll-behavior: smooth;
     }
-
     .console-body::-webkit-scrollbar { width: 4px; }
-    .console-body::-webkit-scrollbar-track { background: transparent; }
     .console-body::-webkit-scrollbar-thumb { background: #1a1a3a; border-radius: 4px; }
 
     .log-line { display: flex; gap: 8px; }
@@ -343,33 +401,19 @@
     .log-info { color: var(--yellow); }
     .log-sys  { color: #00ccff; }
 
-    .empty-console {
-      color: #222244;
-      text-align: center;
-      margin-top: 80px;
-      font-size: 13px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      font-size: 11px;
-      color: #222244;
-      letter-spacing: 2px;
-      padding: 16px;
-      text-align: center;
-    }
+    .empty-console { color: #222244; text-align: center; margin-top: 80px; font-size: 13px; }
+    footer { font-size: 11px; color: #222244; letter-spacing: 2px; padding: 16px; text-align: center; }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">ASTRO SPAM</div>
+  <div class="logo">T10 MEHEDI SPAM</div>
   <div class="subtitle">Friend Request Spammer &bull; Async Engine</div>
 </header>
 
 <main>
 
-  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-card">
       <div class="val val-total" id="s-total">{{ total }}</div>
@@ -389,7 +433,6 @@
     </div>
   </div>
 
-  <!-- FORM -->
   <div class="form-panel">
     <label>Target Friend UID / Multi Spam Mode</label>
     <div class="input-row">
@@ -407,15 +450,19 @@
     </div>
   </div>
 
-  <!-- CREATOR DATABANK UI -->
   <div class="creator-panel">
     <label style="display:block; font-size:11px; letter-spacing:3px; color:#555577; text-transform:uppercase; margin-bottom:8px;">Database Auto Targets List & Live Count</label>
     <div class="creator-grid" id="creator-list-ui">
-      <!-- Dynamic list from JS -->
-    </div>
+      </div>
   </div>
 
-  <!-- CONSOLE -->
+  <div class="add-uid-panel">
+    <label style="font-size:11px; letter-spacing:2px; color:#555577; text-transform:uppercase; white-space:nowrap;">Add Custom Target:</label>
+    <input type="text" id="custom-name-input" placeholder="Name/Label..." style="flex: 1;"/>
+    <input type="text" id="custom-uid-input" placeholder="UID..." style="flex: 1;"/>
+    <button class="btn-add-custom" onclick="addCustomUIDToArray()">ADD TARGET</button>
+  </div>
+
   <div class="console-wrap">
     <div class="console-header">
       <div class="dot dot-r"></div>
@@ -430,14 +477,14 @@
 
 </main>
 
-<footer>ASTRO SPAM &bull; Powered by Python + Flask &bull; Async aiohttp Engine</footer>
+<footer>T10 MEHEDI SPAM &bull; Powered by Python + Flask &bull; Async aiohttp Engine</footer>
 
 <script>
   const totalAccs = {{ total }};
   let es = null;
   let running = false;
 
-  // আপনার দেওয়া সম্পূর্ণ JSON ডেটাবেজ যা UI তে লোড হবে
+  // গ্লোবাল ডেটাবেজ অ্যারে
   const uidDatabase = {
     "creators": [
       { "name": "MR TRIPLE R", "uid": "728027523" },
@@ -469,7 +516,7 @@
     ]
   };
 
-  // UI তে লোড করার ফাংশন
+  // UI রেন্ডার ফাংশন
   function loadUIDDatabaseUI() {
     const container = document.getElementById('creator-list-ui');
     container.innerHTML = '';
@@ -482,13 +529,45 @@
           <div class="creator-name">${c.name}</div>
           <div class="creator-uid">UID: ${c.uid}</div>
         </div>
-        <div class="creator-count" id="count-${c.uid}">0</div>
+        <div class="creator-actions">
+          <button class="btn-manual-req" id="action-btn-${c.uid}" onclick="triggerManualItemReq('${c.uid}', '${c.name}')" title="Send Request to this UID Only">REQ 🚀</button>
+          <div class="creator-count" id="count-${c.uid}">0</div>
+        </div>
       `;
       container.appendChild(item);
     });
+    toggleActionButtonsState();
   }
 
-  // পেজ লোড হলেই লিস্ট দেখাবে
+  // নতুন কাস্টম UID যুক্ত করার লজিক
+  function addCustomUIDToArray() {
+    const nameInput = document.getElementById('custom-name-input');
+    const uidInput = document.getElementById('custom-uid-input');
+    const name = nameInput.value.trim();
+    const uid = uidInput.value.trim();
+
+    if(!name || !uid) { alert('Name abong UID duitai fillup koro!'); return; }
+    
+    // ডুপ্লিকেট চেক
+    const exists = uidDatabase.creators.some(c => c.uid === uid);
+    if(exists) { alert('Ei UID ti list a age thekei ase!'); return; }
+
+    uidDatabase.creators.push({ "name": name, "uid": uid });
+    loadUIDDatabaseUI();
+    
+    nameInput.value = '';
+    uidInput.value = '';
+    appendLog('log-sys', '', 'ADDED', `Successfully added "${name}" (UID: ${uid}) to current target session.`);
+  }
+
+  // রানিং অবস্থায় বাটনের স্টেট কন্ট্রোল
+  function toggleActionButtonsState() {
+    const btns = document.querySelectorAll('.btn-manual-req');
+    btns.forEach(btn => {
+      btn.disabled = running;
+    });
+  }
+
   window.onload = loadUIDDatabaseUI;
 
   function ts() {
@@ -540,7 +619,7 @@
     loadUIDDatabaseUI();
   }
 
-  // মেইন সিঙ্গেল স্প্যাম ফাংশন (যা অলরেডি ছিল)
+  // মেইন ইনপুট ফিল্ড স্প্যাম
   function startSpam() {
     if (running) return;
     const uid = document.getElementById('uid-input').value.trim();
@@ -549,34 +628,49 @@
     running = true;
     document.getElementById('btn-start').disabled = true;
     document.getElementById('btn-auto-all').disabled = true;
+    toggleActionButtonsState();
     setStatus('running');
     updateStats(0, 0, 0);
-
-    const empty = document.getElementById('empty-msg');
-    if (empty) empty.remove();
 
     appendLog('log-sys', '', '', `▶ Starting spam → Target UID: ${uid} | Accounts: ${totalAccs}`);
     executeSpamStream(uid);
   }
 
-  // লুপ চালিয়ে একটার পর একটা অটো রিকোয়েস্ট মারার অ্যালগরিদম
+  // অটোমোড থেকে ম্যানুয়ালি কোনো একটি নির্দিষ্ট আইডিতে সিঙ্গেল ক্লিক রিকোয়েস্ট ট্রিগার
+  function triggerManualItemReq(uid, name) {
+    if (running) return;
+    running = true;
+    document.getElementById('btn-start').disabled = true;
+    document.getElementById('btn-auto-all').disabled = true;
+    toggleActionButtonsState();
+    
+    const el = document.getElementById(`creator-${uid}`);
+    if(el) el.style.borderColor = "var(--green)";
+    
+    setStatus('running');
+    updateStats(0, 0, 0);
+    appendLog('log-info', '', 'MANUAL', `Directly syncing targeted stream request for: ${name} (UID: ${uid})`);
+    
+    executeSpamStream(uid, name, el);
+  }
+
+  // অল অটোমেটেড লুপ মোড
   async function startAutoAllSpam() {
     if (running) return;
     running = true;
     document.getElementById('btn-start').disabled = true;
     document.getElementById('btn-auto-all').disabled = true;
+    toggleActionButtonsState();
     
     appendLog('log-sys', '', 'SYSTEM', `🚀 STARTING AUTO ALL UID MULTI-SPAM MODE...`);
 
     for (let i = 0; i < uidDatabase.creators.length; i++) {
       const creator = uidDatabase.creators[i];
-      // হাইলাইট করার জন্য আইটেম বর্ডার চেঞ্জ
       const el = document.getElementById(`creator-${creator.uid}`);
       if(el) el.style.borderColor = "var(--green)";
 
       appendLog('log-info', '', 'LOOP', `Processing [${i+1}/${uidDatabase.creators.length}] : ${creator.name}`);
       
-      // কারেন্ট রানিং UID প্রসেস শেষ হওয়া পর্যন্ত ওয়েট করবে (Promise Based Sync)
       await new Promise((resolve) => {
         setStatus('running');
         updateStats(0, 0, 0);
@@ -586,7 +680,6 @@
 
         es.onmessage = (e) => {
           const d = JSON.parse(e.data);
-
           if (d.type === 'start') return;
 
           if (d.type === 'done') {
@@ -594,11 +687,10 @@
             updateStats(d.success, d.fail, d.total);
             if(el) el.style.borderColor = "var(--border)";
             es.close();
-            resolve(); // লুপের পরবর্তী টার্গেটে যাওয়ার সিগন্যাল
+            resolve();
             return;
           }
 
-          // লাইভ কাউন্টার আপডেট
           if (d.type === 'success') {
             const countEl = document.getElementById(`count-${creator.uid}`);
             if (countEl) {
@@ -621,26 +713,22 @@
       });
     }
 
-    // অল প্রসেস ডান
     setStatus('done');
     running = false;
     document.getElementById('btn-start').disabled = false;
     document.getElementById('btn-auto-all').disabled = false;
+    toggleActionButtonsState();
     appendLog('log-sys', '', 'SYSTEM', `🎉 ALL UID SPAM COMPLETED SUCCESSFULLY!`);
   }
 
-  // ওল্ড সিঙ্গেল ইউজার স্ট্রিম এক্সিকিউশন
-  function executeSpamStream(uid) {
+  // জেনেরিক স্ট্রিম প্রসেসর
+  function executeSpamStream(uid, name = null, htmlElement = null) {
     if (es) { es.close(); es = null; }
     es = new EventSource(`/stream?uid=${encodeURIComponent(uid)}`);
 
     es.onmessage = (e) => {
       const d = JSON.parse(e.data);
-
-      if (d.type === 'start') {
-        appendLog('log-info', '', '●', `Sending requests with ${d.total} accounts...`);
-        return;
-      }
+      if (d.type === 'start') return;
 
       if (d.type === 'done') {
         appendLog('log-sys', '', '◆', `DONE! Success: ${d.success} | Fail: ${d.fail} | Total: ${d.total}`);
@@ -649,11 +737,12 @@
         running = false;
         document.getElementById('btn-start').disabled = false;
         document.getElementById('btn-auto-all').disabled = false;
+        toggleActionButtonsState();
+        if(htmlElement) htmlElement.style.borderColor = "var(--border)";
         es.close();
         return;
       }
 
-      // লাইভ কাউন্ট আপডেট যদি ডাটাবেজের কারো সাথে মিলে
       if (d.type === 'success') {
         const countEl = document.getElementById(`count-${uid}`);
         if (countEl) {
@@ -663,7 +752,8 @@
       }
 
       const isOk = d.type === 'success';
-      appendLog(isOk ? 'log-ok' : 'log-err', d.uid, d.status, d.msg.substring(0, 120));
+      const labelText = name ? `${name} | ${d.msg.substring(0, 80)}` : d.msg.substring(0, 120);
+      appendLog(isOk ? 'log-ok' : 'log-err', d.uid, d.status, labelText);
       updateStats(d.success, d.fail, d.done);
     };
 
@@ -673,6 +763,8 @@
       running = false;
       document.getElementById('btn-start').disabled = false;
       document.getElementById('btn-auto-all').disabled = false;
+      toggleActionButtonsState();
+      if(htmlElement) htmlElement.style.borderColor = "var(--red)";
       if (es) { es.close(); es = null; }
     };
   }
